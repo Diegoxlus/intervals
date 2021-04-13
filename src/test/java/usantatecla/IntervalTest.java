@@ -77,6 +77,7 @@ public class IntervalTest {
     Interval first = new IntervalBuilder().open(left.getLess()).open(left.getGreater()).build();
     Interval second = new IntervalBuilder().open(left.getEquals()).open(left.getGreater()).build();
     assertTrue(first.intersection(second));
+    assertTrue(second.intersection(first));
   }
 
   @Test
@@ -84,6 +85,7 @@ public class IntervalTest {
     Interval first = new IntervalBuilder().open(left.getLess()).open(left.getEquals()).build();
     Interval second = new IntervalBuilder().open(left.getEquals()).open(left.getGreater()).build();
     assertFalse(first.intersection(second));
+    assertFalse(second.intersection(first));
   }
 
   @Test
@@ -91,6 +93,7 @@ public class IntervalTest {
     Interval first = new IntervalBuilder().closed(left.getLess()).closed(left.getEquals()).build();
     Interval second = new IntervalBuilder().closed(left.getEquals()).closed(left.getGreater()).build();
     assertTrue(first.intersection(second));
+    assertTrue(second.intersection(first));
   }
 
 }
