@@ -67,20 +67,20 @@ public class IntervalTest {
   }
 
   @Test
-  public void givenIntervalWhenIntersectionThenTrue(){
+  public void givenOpenIntervalIntervalWhenIntersectionWithItSelfThenTrue(){
     Interval interval = new IntervalBuilder().open(left.getEquals()).open(left.getGreater()).build();
     assertTrue(interval.intersection(interval));
   }
 
   @Test
-  public void givenIntervalWhenIntersectionWithOtherIntervalThenTrue(){
+  public void givenOpenIntervalWhenIntersectionWithOtherOpenIntervalThenTrue(){
     Interval first = new IntervalBuilder().open(left.getLess()).open(left.getGreater()).build();
     Interval second = new IntervalBuilder().open(left.getEquals()).open(left.getGreater()).build();
     assertTrue(first.intersection(second));
   }
 
   @Test
-  public void givenIntervalWhenIntersectionThenFalse(){
+  public void givenOpenIntervalWhenIntersectionWithOtherOpenIntervalThenFalse(){
     Interval first = new IntervalBuilder().open(left.getLess()).open(left.getEquals()).build();
     Interval second = new IntervalBuilder().open(left.getEquals()).open(left.getGreater()).build();
     assertFalse(first.intersection(second));
