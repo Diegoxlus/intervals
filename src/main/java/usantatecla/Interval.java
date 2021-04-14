@@ -15,9 +15,11 @@ public class Interval {
 			return this.min.isWithin(value) && this.max.isWithin(value);
 	}
 
-    public boolean intersection(Interval interval) {
-		return this.max.isWithin(interval.min.value) && interval.max.isWithin(this.min.value) ;
-    }
+	public boolean intersection(Interval interval) {
+		return this.max.isWithin(interval.min.value) &&
+				interval.max.isWithin(this.min.value) &&
+				interval.min.isWithin(this.max.value);
+	}
 
 	@Override
 	public int hashCode() {
