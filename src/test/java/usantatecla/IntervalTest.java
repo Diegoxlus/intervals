@@ -96,4 +96,33 @@ public class IntervalTest {
     assertTrue(second.intersection(first));
   }
 
+  @Test
+  public void givenCloseIntervalWhenIntersectionWithOtherCloseIntervalThenFalse(){
+    Interval first = new IntervalBuilder().closed(left.getLess()).closed(left.getEquals()).build();
+    Interval second = new IntervalBuilder().closed(right.getEquals()).closed(right.getGreater()).build();
+    assertFalse(first.intersection(second));
+    assertFalse(second.intersection(first));
+  }
+
+  @Test
+  public void givenCloseIntervalWhenIntersectionWithOpenIntervalThenTrue(){
+    Interval first = new IntervalBuilder().closed(left.getLess()).closed(right.getEquals()).build();
+    Interval second = new IntervalBuilder().open(left.getEquals()).open(right.getEquals()).build();
+    assertTrue(first.intersection(second));
+  }
+
+  @Test
+  public void givenCloseIntervalWhenIntersectionWithOpenIntervalThenFalse(){
+    Interval first = new IntervalBuilder().closed(right.getLess()).closed(right.getEquals()).build();
+    Interval second = new IntervalBuilder().open(right.getEquals()).open(right.getGreater()).build();
+    assertFalse(first.intersection(second));
+  }
+
+  @Test
+  public void givenOpenIntervalWhenIntersectionWithCloseIntervalThenTrue(){
+    Interval first = new IntervalBuilder().closed(left.getLess()).closed(right.getEquals()).build();
+    Interval second = new IntervalBuilder().open(left.getEquals()).open(right.getEquals()).build();
+    assertTrue(second.intersection(first));
+  }
+
 }
