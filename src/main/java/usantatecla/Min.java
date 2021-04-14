@@ -8,7 +8,11 @@ public class Min {
     this.value = value;
   }
 
-	public boolean isWithin(double value) {
+  public double getValue() {
+    return value;
+  }
+
+  public boolean isWithin(double value) {
       return this.value < value;
   }
 

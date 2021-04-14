@@ -6,7 +6,7 @@ public class Interval {
 	private Max max;
 
 	public Interval(Min min, Max max) {
-		assert min.value <= max.value;
+		assert min.getValue() <= max.getValue();
 		this.min = min;
 		this.max = max;
 	}
@@ -16,9 +16,9 @@ public class Interval {
 	}
 
 	public boolean intersection(Interval interval) {
-		return this.max.isWithin(interval.min.value) &&
-				interval.max.isWithin(this.min.value) &&
-				interval.min.isWithin(this.max.value);
+		return this.max.isWithin(interval.min.getValue()) &&
+				interval.max.isWithin(this.min.getValue()) &&
+				interval.min.isWithin(this.max.getValue());
 	}
 
 	@Override

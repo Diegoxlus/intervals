@@ -8,6 +8,10 @@ public class Max {
     this.value = value;
   }
 
+  public double getValue() {
+    return value;
+  }
+
   public boolean isWithin(double value) {
     return this.value > value;
   }
